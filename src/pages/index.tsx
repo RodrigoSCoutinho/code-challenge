@@ -1,35 +1,26 @@
-import { useEffect, useState } from "react"
 
-type Students = {
-  firstName: string;
-  lastName: string;
-  email: string;
+import { useFetch } from "../hooks/useFetch";
+
+
+type RepositoriesProps = {
   company: string;
-  skill: string;
-  grades: number;
+  email: string;
 }
 
 export default function Home() {
   
-  const [students, setStudents] = useState<Students[]>([])
+  const { data: repositories} = useFetch<RepositoriesProps[]>('https://api.hatchways.io/assessment/students');
   
-  useEffect(() => {
-    fetch('https://api.hatchways.io/assessment/students')
-     .then(response => response.json())
-     .then(data => {
-       setStudents(data);
-    })
-  },[])
-  
-  return (
+  return(
     <ul>
-       {students.map(stu => {
-            return(
-                <li key={stu.firstName}>
-                 <h3>{stu.firstName}</h3>
-                </li>
-      )
-   })}
-  </ul>
-  )
+      {repositories?.map(repo => {
+        return(
+          <li key={repo.company}>
+            <h1>{repo.company}</h1>
+             <p>{repo.email}</p>
+          </li> 
+         )
+      })}
+    </ul>
+    )
 }
