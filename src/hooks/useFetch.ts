@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 
 export function useFetch<T = unknown>(url: string){
   
-const [data, setData] = useState<T | null>(null)
+// const [data, setData] = useState<T | null>(null)
 
-  useEffect(() => {
-    axios.get(url)
-     .then(response => {
-        setData(response.data)
-    })
-  },[])
+//   useEffect(() => {
+//     axios.get('https://api.hatchways.io/assessment/students')
+//      .then((response) => {
+//         console.log(response.data)
+//     })
+//   },[])
 
-  return { data }
+//   return { data }
 }
