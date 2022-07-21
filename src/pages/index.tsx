@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useFetch } from "../hooks/useFetch";
+
+// import { useFetch } from "../hooks/useFetch";
 
 
 // type RepositoriesProps = {
@@ -9,10 +10,11 @@ import { useFetch } from "../hooks/useFetch";
 // }
 
 export default function Home() {
-
-  const [students, setStudents] = useState([])
   
   // const { data: repositories} = useFetch<RepositoriesProps[]>('https://api.hatchways.io/assessment/students');
+
+  const [students, setStudents] = useState([])
+ 
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
      .then((response) => {
@@ -24,30 +26,35 @@ export default function Home() {
   },[])
   
   return(
-    // <ul>
-    //   {repositories?.map(repo => {
-    //     return(
-    //       <li>{repo.company}
-    //         <h1>{repo.company}</h1>
-    //          <p>{repo.email}</p>
-    //       </li> 
-    //      )
-    //   })}
-    // </ul>
     <>
      {
-      students.map((student, key) => {
+       students.map((student, key) => {
          return(
-          <div>
-            {/* <img>{student.pic}</img> */}
-          <h1>{student.firstName}</h1>
-          <h3><span>Email: </span>{student.email}</h3>
-          <h3><span>Company: </span>{student.company}</h3>
-          <h3><span>Skill: </span> {student.skill}</h3>
-          <h3><span></span>{student.grades}</h3>
+           <div>
+            <img alt="Student" id={student.id}
+            src={student.pic}
+            className="area"
+            >{student.img}
+            </img>
+          
+          <h1>{student.firstName}<span> {student.lastName}</span> </h1>
+          <p><span>Email: </span>{student.email}</p>
+          <p><span>Company: </span>{student.company}</p>
+          <p><span>Skill: </span> {student.skill}</p>
+          <p><span>Average: </span> {student.grades}</p>
           </div>
          )
-      })}
+        })}
     </>
+        // <ul>
+        //   {repositories?.map(repo => {
+        //     return(
+        //       <li>{repo.company}
+        //         <h1>{repo.company}</h1>
+        //          <p>{repo.email}</p>
+        //       </li> 
+        //      )
+        //   })}
+        // </ul>
     )
 }
