@@ -33,18 +33,20 @@ export default function Home() {
            <div>
             <img alt="Student" id={student.id}
             src={student.pic}
-            className="area"
+            className=""
             >{student.img}
             </img>
           
-          <h1>{student.firstName}<span> {student.lastName}</span> </h1>
-          <p><span>Email: </span>{student.email}</p>
+          <h1 className="">{student.firstName}<span> {student.lastName}</span> </h1>
+          <p className="text-red-600"><span>Email: </span>{student.email}</p>
           <p><span>Company: </span>{student.company}</p>
           <p><span>Skill: </span> {student.skill}</p>
           <p><span>Average: </span> {student.grades}</p>
           </div>
-         )
+
+)
         })}
+<h1 className="text-red-600">Hello</h1>
     </>
         // <ul>
         //   {repositories?.map(repo => {
