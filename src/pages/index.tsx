@@ -1,19 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-// import { useFetch } from "../hooks/useFetch";
-
-
-// type RepositoriesProps = {
-//   company: string;
-//   email: string;
-// }
 
 export default function Home() {
-  
-  // const { data: repositories} = useFetch<RepositoriesProps[]>('https://api.hatchways.io/assessment/students');
 
   const [students, setStudents] = useState([])
+  const [search, setSearch] = useState("")
  
   useEffect(() => {
     axios.get('https://api.hatchways.io/assessment/students')
@@ -27,36 +19,36 @@ export default function Home() {
   
   return(
     <>
+
+    <div className="leading-normal text-center">
+      <input type="text" 
+      placeholder="Search..."
+      onChange={(event) => {
+        setSearch(event.target.value)
+      }}/>
      {
        students.map((student, key) => {
-         return(
-           <div>
-            <img alt="Student" id={student.id}
-            src={student.pic}
-            className=""
-            >{student.img}
-            </img>
-          
-          <h1 className="">{student.firstName}<span> {student.lastName}</span> </h1>
-          <p className="text-red-600"><span>Email: </span>{student.email}</p>
-          <p><span>Company: </span>{student.company}</p>
-          <p><span>Skill: </span> {student.skill}</p>
-          <p><span>Average: </span> {student.grades}</p>
-          </div>
-
-)
+        if(search === ""){
+    
+        } else {
+          return(
+            <div className="flex flex-col items-center justify-around  md:flex-row">
+                <img alt="Student" id={student.id}
+                 src={student.pic}
+                 className="skew-y-12 w-40 h-40 rounded-full "
+                 >{student.img}
+                 </img>
+           
+                   <h1 className="text-5xl font-semibold float-left">{student.firstName}<span> {student.lastName}</span> </h1>
+                   <p className="text-red-600"><span>Email: </span>{student.email}</p>
+                   <p> <span>Company: </span>{student.company}</p>
+                   <p><span>Skill: </span> {student.skill}</p>
+                   <p><span>Average: </span> {student.grades}</p>
+           </div>
+     )
+        }
         })}
-<h1 className="text-red-600">Hello</h1>
+    </div>
     </>
-        // <ul>
-        //   {repositories?.map(repo => {
-        //     return(
-        //       <li>{repo.company}
-        //         <h1>{repo.company}</h1>
-        //          <p>{repo.email}</p>
-        //       </li> 
-        //      )
-        //   })}
-        // </ul>
     )
 }
