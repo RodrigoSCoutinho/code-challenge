@@ -1,21 +1,9 @@
 import axios from "axios";
+import { Head } from "next/document";
 import { useEffect, useState } from "react";
 
 
 export default function Home() {
-
-  // const [students, setStudents] = useState([])
-  // const [search, setSearch] = useState("")
- 
-  // useEffect(() => {
-  //   axios.get('https://api.hatchways.io/assessment/students')
-  //    .then((response) => {
-  //       setStudents(response.data.students)
-  //       console.log(response.data)
-  //     }).catch(() => {
-  //       console.log("Error")
-  //     })
-  // },[])
 
   const [values, setValues] = useState({
     email: "",
@@ -51,47 +39,19 @@ export default function Home() {
   }
   
   return(
-    <>
-    {/* <div className="leading-normal text-center">
-      <input type="text" 
-      placeholder="Search..."
-      onChange={(event) => {
-        setSearch(event.target.value)
-      }}/>
-     {
-       students.map((student, key) => {
-        if(search === ""){
-    
-        } else {
-          return(
-            <div className="flex flex-col items-center justify-around  md:flex-row">
-                <img alt="Student" id={student.id}
-                 src={student.pic}
-                 className="skew-y-12 w-40 h-40 rounded-full "
-                 >{student.img}
-                 </img>
-           
-                   <h1 className="text-5xl font-semibold float-left">{student.firstName}<span> {student.lastName}</span> </h1>
-                   <p className="text-red-600"><span>Email: </span>{student.email}</p>
-                   <p> <span>Company: </span>{student.company}</p>
-                   <p><span>Skill: </span> {student.skill}</p>
-                   <p><span>Average: </span> {student.grades}</p>
-           </div>
-     )
-        }
-        })}
-    </div> */}
-
-
-<div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-   <div className="max-w-md w-full space-y-8">
+     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+         <Head>
+           <title>Home</title>
+         </Head>
+  
+  <div className="max-w-md w-full space-y-8">
      <div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
            <p className="mt-2 text-center text-sm text-gray-600">
              Or
              <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
            </p>
- </div>
+  </div>
    
     <form className="mt-8 space-y-6" action="#" method="GET" onSubmit={handleSubmit}>
       { submitted && valid ? <div className="alert alert-success" role="alert">Sucess!</div> : null}
@@ -146,6 +106,5 @@ export default function Home() {
     </form>
   </div>
 </div>
-    </>
     )
 }
