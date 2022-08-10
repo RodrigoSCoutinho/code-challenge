@@ -54,7 +54,7 @@ export default function Home() {
   </div>
    
     <form className="mt-8 space-y-6" action="#" method="GET" onSubmit={handleSubmit}>
-      { submitted && valid ? <div className="alert alert-success" role="alert">Sucess!</div> : null}
+      { submitted && valid ? <div className="alert alert-success" role="alert">Sucess, Thank You!</div> : null}
       <input type="hidden" name="remember" value="true"/>
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
