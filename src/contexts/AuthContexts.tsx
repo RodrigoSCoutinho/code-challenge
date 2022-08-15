@@ -1,13 +1,17 @@
 import { createContext } from "react"
 
-export const AuthContext = createContext({})
+type AuthContextType = {
+  isAuthenticated: boolean;
+}
+
+export const AuthContext = createContext({} as AuthContextType)
 
 
 export function AuthProvider({ children }){
    const isAuthenticated = false;
    
     return(
-        <AuthContext.Provider value={{}}>
+        <AuthContext.Provider value={{ isAuthenticated}}>
          {children}
         </AuthContext.Provider>
     )
